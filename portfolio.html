@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lorena | Portfolio</title>
+  <meta name="description" content="Portfolio de proyectos de desarrollo web." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="header">
+    <nav class="nav container">
+      <a class="logo" href="#inicio">Lorena Martín Piñero</a>
+
+      <input id="menu" type="checkbox" class="nav__toggle" />
+      <label for="menu" class="nav__burger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <ul class="nav__links">
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a class="btn btn--small" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main id="inicio">
+    <section class="hero container">
+      <div class="hero__text">
+        <p class="pill">Disponible · DAW / Full Stack Junior</p>
+        <h1>Hola, soy <span class="accent">Lorena</span> 👋</h1>
+        <p class="lead">
+          Desarrollo apps web y proyectos con foco en diseño limpio, rapidez y buena experiencia de usuario.
+          Aquí tienes una selección de mis trabajos.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/lorena-mart%C3%ADn-pi%C3%B1ero-50880b330/" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/lorenamp25" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+
+        <div class="mini">
+          <div class="mini__item">
+            <span class="mini__num">+X</span>
+            <span class="mini__label">Proyectos</span>
+          </div>
+          <div class="mini__item">
+            <span class="mini__num">DAW</span>
+            <span class="mini__label">Titulación</span>
+          </div>
+          <div class="mini__item">
+            <span class="mini__num">UX</span>
+            <span class="mini__label">Enfoque</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero__card">
+        <div class="avatar" aria-hidden="true">
+          <span>TN</span>
+        </div>
+
+        <div class="card">
+          <h3>Resumen</h3>
+          <ul class="checklist">
+            <li>Angular / HTML / CSS</li>
+            <li>APIs + CRUD + Auth</li>
+            <li>Diseño responsive</li>
+            <li>Deploy (GitHub Pages )</li>
+          </ul>
+        </div>
+
+        <div class="card card--soft">
+          <h3>Ahora mismo</h3>
+          <p>
+            Montando proyectos para el portfolio y preparando entrevistas.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="section container">
+      <div class="section__head">
+        <h2>Proyectos</h2>
+        <p>Una selección de lo que he construido (y lo que estoy mejorando).</p>
+      </div>
+
+      <div class="grid">
+        <!-- PROYECTO 1 -->
+        <article class="project">
+          <div class="project__top">
+            <div class="project__badge">Destacado</div>
+            <h3>RecetasApp</h3>
+            <p class="muted">
+              App de recetas con categorías, CRUD y diseño responsive.
+            </p>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Angular</span>
+            <span class="tag">API</span>
+            <span class="tag">PHP</span>
+            <span class="tag">POSTGRESQL</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </div>
+
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="http://87.106.58.176/" target="_blank" rel="noreferrer">Proyecto Desplegado</a>
+            <a class="btn btn--small btn--ghost" href="https://github.com/lorenamp25/TFG_DAW" target="_blank" rel="noreferrer">Código</a>
+          </div>
+        </article>
+
+        <!-- PROYECTO 2 -->
+        <article class="project">
+          <div class="project__top">
+            <div class="project__badge project__badge--alt">Nuevo</div>
+            <h3> PROYECTO SISTEMA TURNOS</h3>
+            <p class="muted">
+              Panel con login, gestión de usuarios y tablas.
+            </p>
+          </div>
+
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </div>
+
+          <div class="project__links">
+            
+            <a class="btn btn--small btn--ghost" href="https://github.com/lorenamp25/PROYECTO-SISTEMA-TURNOS.git" target="_blank" rel="noreferrer">Código</a>
+          </div>
+        </article>
+
+        <!-- PROYECTO 3 -->
+        <article class="project">
+          <div class="project__top">
+            <div class="project__badge project__badge--alt2">Web</div>
+            <h3>PROYECTO CARNICERIA</h3>
+           <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">PHP</span>
+          </div>
+          </div>
+
+          
+
+          <div class="project__links">
+        
+            <a class="btn btn--small btn--ghost" href="https://github.com/lorenamp25/PROYECTO-CARNICERIA.git" target="_blank" rel="noreferrer">Código</a>
+          </div>
+        </article>
+
+        <!-- PROYECTO 4 -->
+        
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section container">
+      <div class="section__head">
+        <h2>Skills</h2>
+        <p>Lo que manejo y lo que sigo reforzando.</p>
+      </div>
+
+      <div class="skills">
+        <div class="card">
+          <h3>Frontend</h3>
+          <p class="muted">HTML · CSS · JS · Angular · Responsive · Accesibilidad </p>
+          <div class="bars">
+            <div class="bar"><span style="width: 90%"></span></div>
+            <div class="bar"><span style="width: 80%"></span></div>
+            <div class="bar"><span style="width: 70%"></span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Backend</h3>
+          <p class="muted">APIs · Auth · CRUD ·  MYSQL · POSTGRESQL</p>
+          <div class="bars">
+            <div class="bar"><span style="width: 75%"></span></div>
+            <div class="bar"><span style="width: 65%"></span></div>
+            <div class="bar"><span style="width: 60%"></span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Herramientas</h3>
+          <p class="muted">Git · GitHub · Postman · Figma (básico) · Deploy</p>
+          <div class="chips">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Postman/Imsobnia</span>
+            <span class="chip">Deploy</span>
+            <span class="chip">Docker Desktop</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section id="sobre-mi" class="section container">
+      <div class="section__head">
+        <h2>Sobre mí</h2>
+        <p>Un mini “pitch” para que tu perfil parezca pro.</p>
+      </div>
+
+      <div class="about">
+        <div class="card">
+          <h3>Quién soy</h3>
+          <p>
+            Soy estudiante/titulado de DAW y me gusta crear aplicaciones claras y útiles.
+            Me enfoco en hacer interfaces limpias, rápidas y que se entiendan a la primera.
+          </p>
+        </div>
+
+        <div class="card card--soft">
+          <h3>Lo que busco</h3>
+          <p>
+            Primer puesto/junior donde pueda crecer, aprender buenas prácticas y aportar desde el día 1.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section container">
+      <div class="section__head">
+        <h2>Contacto</h2>
+        <p>Si alguien llega desde LinkedIn, que lo tenga fácil.</p>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <h3>Escríbeme</h3>
+          <p class="muted">Respondo rápido 🙂</p>
+           <p class="muted">+34 640254564</p>
+          <div class="contact__links">
+            <a class="btn" href="lomapi05@gmail.com">lomapi05@gmail.com</a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/lorena-mart%C3%ADn-pi%C3%B1ero-50880b330/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn btn--ghost" href="https://github.com/lorenamp25" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="card card--soft">
+          <h3>Documentos</h3>
+          <p>Aqui mi Curriculum Vitae actualizado.
+          </p>
+          <a class="btn btn--small" href="C.V. Lorena Martin PiÃ±ero.docx" target="_blank" rel="noreferrer">Ver CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Lorena Martín Piñero</p>
+      <a href="#inicio" class="muted">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
