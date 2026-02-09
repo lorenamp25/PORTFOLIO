@@ -602,4 +602,3 @@ footer{ margin-top: 24px; text-align:center; color: rgb(255, 255, 255); font-siz
   .techGrid{ grid-template-columns: repeat(2, 1fr); }
   .projGrid{ grid-template-columns: 1fr; }
 }
-
