@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MarioQuest 2 — Worlds, Secrets & Bosses</title>
+  <link rel="stylesheet" href="marioquest2.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">🍄 MARIOQUEST 2</div>
+    <div class="sub">World Map • 60 niveles • secrets • boss • powerups • avatar • speedrun</div>
+  </div>
+
+  <div class="topActions">
+    <button class="btn" id="btnHome" type="button">HOME</button>
+    <button class="btn" id="btnMap" type="button">MAPA</button>
+    <button class="btn" id="btnLevels" type="button">NIVELES</button>
+    <button class="btn" id="btnAvatar" type="button">AVATAR</button>
+    <button class="btn ghost" id="btnSound" type="button">SOUND: ON</button>
+    <button class="btn ghost" id="btnFullscreen" type="button">FULLSCREEN</button>
+    <button class="btn danger" id="btnReset" type="button">RESET</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="gamePane">
+    <div class="hud">
+      <div class="hudLeft">
+        <span class="chip">WORLD <strong id="hudWorld">1-1</strong></span>
+        <span class="chip">LEVEL <strong id="hudLevel">01</strong>/60</span>
+        <span class="chip">TIME <strong id="hudTime">400</strong></span>
+        <span class="chip">RUN <strong id="hudRunTime">0.00s</strong></span>
+        <span class="chip">BEST <strong id="hudBestTime">—</strong></span>
+      </div>
+      <div class="hudRight">
+        <span class="chip big">❤️ <strong id="hudLives">3</strong></span>
+        <span class="chip big">🪙 <strong id="hudCoins">0</strong></span>
+        <span class="chip big">⭐ <strong id="hudPLvl">1</strong></span>
+        <span class="chip big">XP <strong id="hudXP">0</strong></span>
+        <span class="chip big">STATE <strong id="hudState">SMALL</strong></span>
+      </div>
+    </div>
+
+    <div class="canvasWrap">
+      <canvas id="game" width="960" height="360"></canvas>
+
+      <div class="overlay" id="overlay">
+        <!-- HOME -->
+        <div class="panel" id="screenHome">
+          <h1>MARIOQUEST 2</h1>
+          <p>World Map real, 60 niveles, secrets por mundo con llave y boss cada 10 niveles.</p>
+
+          <div class="cards">
+            <div class="card">
+              <div class="k">Controles</div>
+              <div class="v">
+                <div><strong>← →</strong> mover</div>
+                <div><strong>Space / ↑</strong> saltar</div>
+                <div><strong>Shift</strong> correr</div>
+                <div><strong>R</strong> reiniciar nivel</div>
+                <div><strong>Esc</strong> menú</div>
+                <div><strong>F</strong> fullscreen</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="k">Progreso</div>
+              <div class="v">
+                <div>Desbloqueado: <strong id="homeBest">1</strong>/60</div>
+                <div>Coins: <strong id="homeCoins">0</strong></div>
+                <div>Player ⭐: <strong id="homePLvl">1</strong></div>
+                <div>XP: <strong id="homeXP">0</strong></div>
+                <div>Secrets: <strong id="homeSecrets">0</strong>/6</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn big" id="btnPlay" type="button">CONTINUAR</button>
+            <button class="btn ghost big" id="btnOpenMap" type="button">WORLD MAP</button>
+            <button class="btn ghost big" id="btnOpenLevels" type="button">LISTA NIVELES</button>
+            <button class="btn ghost big" id="btnOpenAvatar" type="button">EDITAR AVATAR</button>
+          </div>
+
+          <div class="hint">
+            Tip: Busca la <strong>🔑 llave</strong> en cada mundo para desbloquear su <strong>nivel secreto S</strong>.
+            En los niveles 10/20/30/40/50/60 hay <strong>BOSS</strong>.
+          </div>
+        </div>
+
+        <!-- WORLD MAP -->
+        <div class="panel hidden" id="screenMap">
+          <div class="headRow">
+            <div>
+              <div class="title">WORLD MAP</div>
+              <div class="muted">Elige un mundo y un nodo (niveles y secreto S).</div>
+            </div>
+            <div class="headActions">
+              <button class="btn ghost" id="btnBackHomeMap" type="button">VOLVER</button>
+            </div>
+          </div>
+
+          <div class="mapWrap">
+            <div class="mapLeft">
+              <div class="worldTabs" id="worldTabs"></div>
+              <div class="mapLegend">
+                <span class="pill ok">● desbloqueado</span>
+                <span class="pill lock">● bloqueado</span>
+                <span class="pill done">● completado</span>
+                <span class="pill now">● actual</span>
+                <span class="pill secret">● secreto</span>
+                <span class="pill boss">● boss</span>
+              </div>
+              <div class="nodes" id="mapNodes"></div>
+              <div class="row">
+                <button class="btn" id="btnMapPlay" type="button">JUGAR</button>
+                <button class="btn ghost" id="btnMapLevels" type="button">LISTA</button>
+              </div>
+            </div>
+
+            <div class="mapRight">
+              <div class="card">
+                <div class="k">Nodo seleccionado</div>
+                <div class="v">
+                  <div id="mapSelTitle"><strong>—</strong></div>
+                  <div class="muted" id="mapSelInfo">—</div>
+                  <div class="muted" id="mapSelBest">Best: —</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="k">Objetos</div>
+                <div class="v">
+                  <div>Bloque “?”: monedas / powerups</div>
+                  <div>Bloque ladrillo: se rompe en BIG</div>
+                  <div>Checkpoint: bandera intermedia</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEVEL LIST -->
+        <div class="panel hidden" id="screenLevels">
+          <div class="headRow">
+            <div>
+              <div class="title">LISTA DE NIVELES</div>
+              <div class="muted">60 niveles + Secrets (S) por mundo (si tienes 🔑).</div>
+            </div>
+            <div class="headActions">
+              <button class="btn ghost" id="btnBackHomeLv" type="button">VOLVER</button>
+            </div>
+          </div>
+
+          <div class="legend">
+            <span class="pill ok">● desbloqueado</span>
+            <span class="pill lock">● bloqueado</span>
+            <span class="pill done">● completado</span>
+            <span class="pill boss">● boss</span>
+            <span class="pill secret">● secreto</span>
+          </div>
+
+          <div class="levelGrid" id="levelGrid"></div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" id="btnPlaySelected" type="button">JUGAR</button>
+            <button class="btn ghost" id="btnLevelsMap" type="button">MAPA</button>
+          </div>
+        </div>
+
+        <!-- PAUSE -->
+        <div class="panel hidden" id="screenPause">
+          <div class="title" id="pauseTitle">PAUSA</div>
+          <div class="muted" id="pauseText">¿Qué quieres hacer?</div>
+          <div class="row">
+            <button class="btn big" id="btnResume" type="button">SEGUIR</button>
+            <button class="btn ghost big" id="btnPauseMap" type="button">MAPA</button>
+            <button class="btn ghost big" id="btnPauseLevels" type="button">NIVELES</button>
+            <button class="btn ghost big" id="btnPauseAvatar" type="button">AVATAR</button>
+            <button class="btn danger big" id="btnRestart" type="button">REINICIAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobilePad">
+      <button class="pad" data-k="left">◀</button>
+      <button class="pad" data-k="right">▶</button>
+      <button class="pad" data-k="jump">⤒</button>
+      <button class="pad" data-k="run">RUN</button>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="bottomBar">
+      <div class="pill">Outfit: <strong id="hudOutfit">Rookie</strong></div>
+      <div class="pill">Mapa: <strong id="hudTheme">Sky</strong></div>
+      <div class="pill">Power: <strong id="hudPower">—</strong></div>
+      <div class="pill">Secret key: <strong id="hudKey">NO</strong></div>
+    </div>
+  </section>
+
+  <aside class="sidePane">
+    <div class="sideCard">
+      <div class="sideTitle">Avatar</div>
+      <canvas id="avatarMini" width="220" height="220"></canvas>
+      <div class="muted tiny">Se aplica al personaje.</div>
+    </div>
+
+    <div class="sideCard">
+      <div class="sideTitle">Speedrun</div>
+      <div class="statRow"><span>Best nivel actual</span><strong id="sideBestTime">—</strong></div>
+      <div class="statRow"><span>Tiempo run actual</span><strong id="sideRunTime">0.00s</strong></div>
+      <div class="statRow"><span>Muertes run</span><strong id="sideDeaths">0</strong></div>
+    </div>
+
+    <div class="sideCard">
+      <div class="sideTitle">Estado</div>
+      <div class="statRow"><span>Desbloqueados</span><strong id="sideUnlocked">1</strong></div>
+      <div class="statRow"><span>Completados</span><strong id="sideDone">0</strong></div>
+      <div class="statRow"><span>Secrets</span><strong id="sideSecrets">0</strong></div>
+      <div class="statRow"><span>Selección</span><strong id="sideSelected">1</strong></div>
+    </div>
+  </aside>
+</main>
+
+<!-- AVATAR MODAL -->
+<div class="modal" id="avatarModal" aria-hidden="true">
+  <div class="modalBack" data-close="1"></div>
+  <div class="modalPanel">
+    <div class="modalHead">
+      <div>
+        <div class="modalTitle">Editor de Avatar</div>
+        <div class="modalSub">Pelo/ojos/outfit/acc + colores libres + presets.</div>
+      </div>
+      <button class="btn ghost" data-close="1" type="button">X</button>
+    </div>
+
+    <div class="modalBody">
+      <div class="previewCol">
+        <canvas id="avatarPreview" width="320" height="320"></canvas>
+        <div class="muted tiny">Outfits se desbloquean subiendo ⭐ level.</div>
+      </div>
+
+      <div class="editCol">
+        <div class="grid2">
+          <div class="field">
+            <label>Nombre</label>
+            <input id="avaName" placeholder="Player" maxlength="14" />
+          </div>
+          <div class="field">
+            <label>Outfit</label>
+            <select id="avaOutfit"></select>
+          </div>
+
+          <div class="field">
+            <label>Accesorio</label>
+            <select id="avaAcc">
+              <option value="none">None</option>
+              <option value="cap">Cap</option>
+              <option value="glasses">Glasses</option>
+              <option value="headphones">Headphones</option>
+              <option value="mask">Mask</option>
+              <option value="cape">Cape</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Pelo</label>
+            <select id="avaHair">
+              <option value="short">Short</option>
+              <option value="bob">Bob</option>
+              <option value="curly">Curly</option>
+              <option value="bun">Bun</option>
+              <option value="spiky">Spiky</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Ojos</label>
+            <select id="avaEyes">
+              <option value="soft">Soft</option>
+              <option value="focus">Focus</option>
+              <option value="happy">Happy</option>
+              <option value="wide">Wide</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Vibe</label>
+            <select id="avaVibe">
+              <option value="neo">Neo</option>
+              <option value="soft">Soft</option>
+              <option value="street">Street</option>
+              <option value="pro">Pro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="gridColors">
+          <div class="field">
+            <label>Skin</label>
+            <input type="color" id="colSkin" />
+          </div>
+          <div class="field">
+            <label>Outfit</label>
+            <input type="color" id="colOutfit" />
+          </div>
+          <div class="field">
+            <label>Hair</label>
+            <input type="color" id="colHair" />
+          </div>
+          <div class="field">
+            <label>Accent</label>
+            <input type="color" id="colAccent" />
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="avaRandom" type="button">RANDOM</button>
+          <button class="btn ghost" id="avaPreset1" type="button">PRESET 1</button>
+          <button class="btn ghost" id="avaPreset2" type="button">PRESET 2</button>
+          <button class="btn ghost" id="avaPreset3" type="button">PRESET 3</button>
+          <button class="btn ghost" id="avaDefault" type="button">DEFAULT</button>
+          <button class="btn big" id="avaApply" type="button">APLICAR</button>
+        </div>
+
+        <div class="muted tiny">
+          Presets: te pongo 3 looks listos y tú los tuneas.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="marioquest2.js"></script>
+</body>
+</html>

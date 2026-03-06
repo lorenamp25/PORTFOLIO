@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ByteBazar — Tienda</title>
+  <meta name="description" content="Tienda informática aesthetic con carrito pro y checkout demo." />
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="noise">
+  <header class="topbar">
+    <a class="brand" href="landing.html" aria-label="Ir a inicio">
+      <span class="brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="28" height="28">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,.95)"/>
+              <stop offset="1" stop-color="rgba(120,126,255,.95)"/>
+            </linearGradient>
+          </defs>
+          <path d="M18 18h28a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6V24a6 6 0 0 1 6-6Z" fill="url(#g1)" opacity=".18"/>
+          <path d="M22 24h20a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" fill="rgba(255,255,255,.65)" opacity=".35"/>
+          <path d="M20 46h24" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+          <circle cx="46" cy="22" r="3" fill="rgba(120,126,255,.95)" opacity=".9"/>
+        </svg>
+      </span>
+      <span class="brand__text">ByteBazar</span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav__link is-active" href="shop.html">Tienda</a>
+      <a class="nav__link" href="dashboard.html">Dashboard</a>
+      <a class="nav__link" href="landing.html">Landing</a>
+    </nav>
+
+    <button class="pill" id="themeBtn" type="button">Tema</button>
+  </header>
+
+  <main class="wrap page">
+    <section class="pageHead">
+      <div>
+        <h1 class="h1">Tienda</h1>
+       
+      </div>
+
+      <button class="cartBtn" id="openCart" type="button" aria-label="Abrir carrito">
+        <span class="cartIcon">🛒</span>
+        <span>Carrito</span>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+    </section>
+
+    <section class="filters">
+      <div class="field">
+        <label>Buscar</label>
+        <input id="q" class="input" placeholder="Busca (teclado, cable, curso, monitor…)"/>
+      </div>
+      <div class="field">
+        <label>Categoría</label>
+        <select id="cat" class="select">
+          <option value="all">Todas</option>
+          <option value="hardware">Hardware</option>
+          <option value="peripherals">Periféricos</option>
+          <option value="dev">Dev</option>
+          <option value="productivity">Productividad</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Orden</label>
+        <select id="sort" class="select">
+          <option value="featured">Destacados</option>
+          <option value="priceAsc">Precio ↑</option>
+          <option value="priceDesc">Precio ↓</option>
+          <option value="ratingDesc">Rating ↓</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Precio máx.</label>
+        <input id="maxPrice" class="input" type="range" min="10" max="350" value="350"/>
+        <div class="rangeRow"><span>10€</span><span id="maxPriceLabel">350€</span></div>
+      </div>
+    </section>
+
+    <section class="grid" id="productGrid" aria-live="polite"></section>
+  </main>
+
+  <!-- CART DRAWER -->
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <h2 class="h2">Tu carrito</h2>
+        <button class="iconBtn" id="closeCart" type="button" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="drawer__body" id="cartItems"></div>
+
+      <div class="drawer__foot">
+        <div class="field" style="margin-bottom:10px">
+          <label>Cupón</label>
+          <div class="couponRow">
+            <input class="input" id="couponInput" placeholder="PRUEBA: BYTE10 o FREESHIP" />
+            <button class="btn" id="applyCoupon" type="button">Aplicar</button>
+          </div>
+          <p class="tiny muted" id="couponHint"></p>
+        </div>
+
+        <div class="totals">
+          <div class="row"><span>Subtotal</span><strong id="cartSubtotal">0€</strong></div>
+          <div class="row muted"><span>Envío</span><span id="cartShipping">Gratis</span></div>
+          <div class="row muted"><span>Descuento</span><span id="cartDiscount">0€</span></div>
+          <div class="row big"><span>Total</span><strong id="cartTotal">0€</strong></div>
+        </div>
+
+        <button class="btn primary" id="checkoutBtn" type="button">Checkout</button>
+        <p class="tiny muted">Checkout demo: crea pedido, recibo y lo verás en Dashboard.</p>
+      </div>
+    </div>
+    <button class="drawer__backdrop" id="cartBackdrop" aria-label="Cerrar carrito"></button>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal__panel" id="checkoutPanel">
+      <div class="modal__head">
+        <h2 class="h2">Checkout</h2>
+        <button class="iconBtn" id="closeCheckout" type="button" aria-label="Cerrar">✕</button>
+      </div>
+
+      <form class="form" id="checkoutForm">
+        <div class="two">
+          <div class="field">
+            <label>Nombre</label>
+            <input class="input" name="name" placeholder="Lorena" required />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input class="input" name="email" type="email" placeholder="hola@mail.com" required />
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label>Dirección</label>
+            <input class="input" name="addr" placeholder="Calle…" required />
+          </div>
+          <div class="field">
+            <label>Ciudad</label>
+            <input class="input" name="city" placeholder="Valladolid" required />
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label>Pago</label>
+            <select class="select" name="pay">
+              <option>Tarjeta</option>
+              <option>PayPal</option>
+              <option>Bizum</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Nota para envío</label>
+            <input class="input" name="shipnote" placeholder="Ej: llamar al llegar…" />
+          </div>
+        </div>
+
+        <button class="btn primary" id="payBtn" type="submit">Pagar</button>
+        <p class="tiny muted" id="checkoutHint"></p>
+      </form>
+    </div>
+    <button class="modal__backdrop" id="checkoutBackdrop" aria-label="Cerrar checkout"></button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

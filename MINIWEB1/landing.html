@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ByteBazar — Landing</title>
+  <meta name="description" content="ByteBazar: tienda estética para devs, setup y herramientas digitales." />
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="noise">
+  <header class="topbar">
+    <a class="brand" href="landing.html" aria-label="Ir a inicio">
+      <span class="brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="28" height="28">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,.95)"/>
+              <stop offset="1" stop-color="rgba(120,126,255,.95)"/>
+            </linearGradient>
+          </defs>
+          <path d="M18 18h28a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6V24a6 6 0 0 1 6-6Z" fill="url(#g1)" opacity=".18"/>
+          <path d="M22 24h20a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" fill="rgba(255,255,255,.65)" opacity=".35"/>
+          <path d="M20 46h24" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+          <circle cx="46" cy="22" r="3" fill="rgba(120,126,255,.95)" opacity=".9"/>
+        </svg>
+      </span>
+      <span class="brand__text">ByteBazar</span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav__link" href="shop.html">Tienda</a>
+      <a class="nav__link" href="dashboard.html">Dashboard</a>
+      <a class="nav__link is-active" href="landing.html">Landing</a>
+    </nav>
+
+    <button class="pill" id="themeBtn" type="button">Tema</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero__left">
+        <p class="kicker">SETUP • DEV • UI</p>
+        <h1 class="h1">La tienda aesthetic para gente de informática.</h1>
+        <p class="sub">Carrito pro, checkout con recibo, dashboard con pedidos reales y animaciones suaves. Todo con HTML + CSS + JS.</p>
+
+        <div class="hero__cta">
+          <a class="btn primary" href="shop.html">Entrar a la tienda</a>
+          <button class="btn ghost" id="scrollPricing" type="button">Ver precios</button>
+        </div>
+
+        <div class="miniBadges">
+          <span class="chip">JS Vanilla</span>
+          <span class="chip">LocalStorage</span>
+          <span class="chip">UI/UX</span>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="mock">
+          <div class="mock__top">
+            <span class="dot mini red"></span>
+            <span class="dot mini yellow"></span>
+            <span class="dot mini green"></span>
+            <span class="muted">bytebazar.app</span>
+          </div>
+          <div class="mock__body">
+            <div class="bar"></div>
+            <div class="bar w70"></div>
+            <div class="bar w55"></div>
+            <div class="cardsMini">
+              <div class="miniCard"></div>
+              <div class="miniCard"></div>
+              <div class="miniCard"></div>
+            </div>
+            <div class="pulseDot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <article class="card feature">
+        <h3>🛒 Carrito real</h3>
+        <p class="muted">Cantidades, variantes, notas, cupón y persistencia.</p>
+      </article>
+      <article class="card feature">
+        <h3>🧾 Checkout con recibo</h3>
+        <p class="muted">Procesando, pedido, ticket descargable y guardado.</p>
+      </article>
+      <article class="card feature">
+        <h3>📊 Dashboard</h3>
+        <p class="muted">Gráficas canvas, tabla de pedidos y export JSON.</p>
+      </article>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="sectionHead">
+        <div>
+          <h2 class="h2">Precios</h2>
+          <p class="muted">Toggle mensual/anual con animación.</p>
+        </div>
+        <div class="toggle">
+          <button class="pill small is-on" id="billMonthly" type="button">Mensual</button>
+          <button class="pill small" id="billYearly" type="button">Anual</button>
+        </div>
+      </div>
+
+      <div class="pricingGrid">
+        <article class="card price">
+          <h3>Starter</h3>
+          <p class="muted">Para empezar</p>
+          <div class="price__num"><span class="euro">€</span><span data-price="starter" class="num">9</span><span class="muted">/mes</span></div>
+          <ul class="list">
+            <li>1 proyecto</li>
+            <li>Soporte básico</li>
+            <li>Plantillas</li>
+          </ul>
+          <button class="btn" data-plan="Starter" type="button">Elegir</button>
+        </article>
+
+        <article class="card price is-hot">
+          <div class="ribbon">Popular</div>
+          <h3>Pro</h3>
+          <p class="muted">Para portfolio serio</p>
+          <div class="price__num"><span class="euro">€</span><span data-price="pro" class="num">19</span><span class="muted">/mes</span></div>
+          <ul class="list">
+            <li>Proyectos ilimitados</li>
+            <li>Soporte rápido</li>
+            <li>Componentes premium</li>
+          </ul>
+          <button class="btn primary" data-plan="Pro" type="button">Elegir</button>
+        </article>
+
+        <article class="card price">
+          <h3>Team</h3>
+          <p class="muted">Para equipos</p>
+          <div class="price__num"><span class="euro">€</span><span data-price="team" class="num">39</span><span class="muted">/mes</span></div>
+          <ul class="list">
+            <li>Roles y permisos</li>
+            <li>Analíticas</li>
+            <li>Soporte VIP</li>
+          </ul>
+          <button class="btn" data-plan="Team" type="button">Elegir</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="sectionHead">
+        <div>
+          <h2 class="h2">FAQ</h2>
+          <p class="muted">Acordeón suave sin librerías.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="faqAcc">
+        <button class="acc" aria-expanded="false">
+          <span>¿Esto sirve para portfolio?</span><span class="muted">+</span>
+        </button>
+        <div class="panel">
+          <p>Sí: demuestra UI moderna, JS práctico (carrito, modal, storage, charts) y estructura limpia.</p>
+        </div>
+
+        <button class="acc" aria-expanded="false">
+          <span>¿Dónde se guardan los pedidos?</span><span class="muted">+</span>
+        </button>
+        <div class="panel">
+          <p>En <code>localStorage</code>. Checkout crea un pedido y el dashboard lo muestra.</p>
+        </div>
+
+        <button class="acc" aria-expanded="false">
+          <span>¿Las fotos dependen de internet?</span><span class="muted">+</span>
+        </button>
+        <div class="panel">
+          <p>No. Son SVG embebidos (data URI), siempre se ven aunque estés offline.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="sectionHead">
+        <div>
+          <h2 class="h2">Contacto</h2>
+          <p class="muted">Validación + toast + “envío” simulado.</p>
+        </div>
+      </div>
+
+      <form class="card form" id="leadForm">
+        <div class="two">
+          <div class="field">
+            <label>Nombre</label>
+            <input class="input" name="name" required placeholder="Tu nombre"/>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input class="input" name="email" type="email" required placeholder="tu@mail.com"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Mensaje</label>
+          <textarea class="textarea" name="msg" required placeholder="Cuéntame qué necesitas…"></textarea>
+        </div>
+
+        <button class="btn primary" type="submit">Enviar</button>
+        <p class="tiny muted" id="leadHint"></p>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p class="muted">ByteBazar demo — HTML + CSS + JS — <span id="year"></span></p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

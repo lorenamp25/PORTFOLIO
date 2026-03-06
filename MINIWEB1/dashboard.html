@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ByteBazar — Dashboard</title>
+  <meta name="description" content="Dashboard demo con pedidos reales guardados desde checkout." />
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="noise">
+  <header class="topbar">
+    <a class="brand" href="landing.html" aria-label="Ir a inicio">
+      <span class="brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="28" height="28">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,.95)"/>
+              <stop offset="1" stop-color="rgba(120,126,255,.95)"/>
+            </linearGradient>
+          </defs>
+          <path d="M18 18h28a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6V24a6 6 0 0 1 6-6Z" fill="url(#g1)" opacity=".18"/>
+          <path d="M22 24h20a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" fill="rgba(255,255,255,.65)" opacity=".35"/>
+          <path d="M20 46h24" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+          <circle cx="46" cy="22" r="3" fill="rgba(120,126,255,.95)" opacity=".9"/>
+        </svg>
+      </span>
+      <span class="brand__text">ByteBazar</span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav__link" href="shop.html">Tienda</a>
+      <a class="nav__link is-active" href="dashboard.html">Dashboard</a>
+      <a class="nav__link" href="landing.html">Landing</a>
+    </nav>
+
+    <button class="pill" id="themeBtn" type="button">Tema</button>
+  </header>
+
+  <main class="wrap page">
+    <section class="pageHead">
+      <div>
+        <h1 class="h1">Dashboard</h1>
+        <p class="sub">Pedidos reales desde Checkout (localStorage) + gráficas canvas.</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="regenBtn" type="button">Regenerar datos</button>
+        <button class="btn ghost" id="exportBtn" type="button">Exportar JSON</button>
+        <a class="btn ghost" href="shop.html">Ir a tienda</a>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card stat">
+        <div class="stat__top">
+          <p class="muted">Ventas</p>
+          <span class="chip up" id="salesDelta">+0%</span>
+        </div>
+        <h3 class="big" id="salesValue">—</h3>
+        <canvas class="spark" id="spark1" width="280" height="70"></canvas>
+      </article>
+
+      <article class="card stat">
+        <div class="stat__top">
+          <p class="muted">Usuarios</p>
+          <span class="chip up" id="usersDelta">+0%</span>
+        </div>
+        <h3 class="big" id="usersValue">—</h3>
+        <canvas class="spark" id="spark2" width="280" height="70"></canvas>
+      </article>
+
+      <article class="card stat">
+        <div class="stat__top">
+          <p class="muted">Carritos</p>
+          <span class="chip down" id="cartsDelta">-0%</span>
+        </div>
+        <h3 class="big" id="cartsValue">—</h3>
+        <canvas class="spark" id="spark3" width="280" height="70"></canvas>
+      </article>
+    </section>
+
+    <section class="grid2">
+      <article class="card">
+        <div class="card__head">
+          <h2 class="h2">Actividad (últimos 12 días)</h2>
+          <div class="toggles">
+            <button class="pill small is-on" data-series="revenue" type="button">Revenue</button>
+            <button class="pill small" data-series="users" type="button">Users</button>
+            <button class="pill small" data-series="carts" type="button">Carts</button>
+          </div>
+        </div>
+        <canvas id="mainChart" class="chart" width="900" height="320"></canvas>
+        <p class="tiny muted" style="padding:0 14px 14px">Tip: cambia la serie. Animación suave.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__head">
+          <h2 class="h2">Pedidos recientes</h2>
+          <div class="tag">localStorage</div>
+        </div>
+
+        <div class="tableWrap">
+          <table class="table" id="ordersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Importe</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="rowEnd">
+          <button class="btn ghost" id="clearOrders" type="button">Vaciar</button>
+          <button class="btn" id="seedOrders" type="button">Generar demo</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

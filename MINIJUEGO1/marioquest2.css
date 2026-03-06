@@ -1,0 +1,497 @@
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:#eaf0ff;
+  background:#0b1020;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+/* Topbar */
+.topbar{
+  position:sticky; top:0; z-index:999;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  gap:14px;
+  padding:12px min(18px,4vw);
+  border-bottom:3px solid #2a3cff;
+  background:#070a14;
+}
+.brand .logo{font-weight:900; letter-spacing:.10em}
+.brand .sub{opacity:.85; font-size:.92rem; margin-top:4px}
+
+.topActions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
+.btn{
+  border:2px solid #2a3cff;
+  background:#11162a;
+  color:inherit;
+  padding:8px 10px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:900;
+  letter-spacing:.06em;
+  transition:.12s;
+}
+.btn:hover{transform:translateY(-1px); filter:brightness(1.15)}
+.btn:active{transform:translateY(0px) scale(.98)}
+.btn.ghost{background:#0d1226}
+.btn.danger{border-color:#ff3b6b}
+.btn.big{padding:10px 14px; border-radius:14px}
+
+.layout{
+  width:min(1220px,92vw);
+  margin:0 auto;
+  padding:16px 0 40px;
+  display:grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap:14px;
+}
+@media (max-width:980px){ .layout{grid-template-columns:1fr} }
+
+.gamePane{
+  border:3px solid #2a3cff;
+  background:#11162a;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow: 0 0 40px #2a3cff55;
+}
+
+.hud{
+  display:flex; justify-content:space-between; gap:12px;
+  padding:12px;
+  border-bottom:3px solid #2a3cff;
+  background:#151b33;
+  flex-wrap:wrap;
+}
+.hudLeft,.hudRight{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+
+.chip{
+  padding:7px 10px;
+  border-radius:12px;
+  border:2px solid #3b4fff;
+  background:#1d2547;
+}
+.chip.big{font-weight:900}
+
+.canvasWrap{position:relative; padding:12px}
+canvas#game{
+  position:relative; z-index:1;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+  border:3px solid #2a3cff;
+  background:#0f1428;
+  image-rendering: pixelated;
+}
+
+.overlay{
+  position:absolute; inset:12px;
+  border-radius:14px;
+  display:grid; place-items:center;
+  background:#0f1428;
+  z-index:50;
+}
+.panel{
+  width:min(900px,94%);
+  border:3px solid #2a3cff;
+  border-radius:16px;
+  background:#141a35;
+  padding:18px;
+  box-shadow:0 0 30px #2a3cff44;
+}
+.panel.hidden{display:none}
+.panel h1{margin:0 0 8px; letter-spacing:.14em}
+.panel p{margin:0 0 14px; opacity:.9}
+
+.cards{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:760px){ .cards{grid-template-columns:1fr} }
+
+.card{
+  border:2px solid #3b4fff;
+  background:#101636;
+  border-radius:14px;
+  padding:12px;
+}
+.k{opacity:.92; font-weight:900; margin-bottom:6px}
+.v{opacity:.92; line-height:1.5}
+
+.row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+.hint{opacity:.9; margin-top:10px}
+.title{font-weight:900; letter-spacing:.12em}
+.muted{opacity:.85}
+.tiny{font-size:.92rem}
+
+.headRow{display:flex; justify-content:space-between; gap:10px; align-items:flex-end; margin-bottom:10px}
+.legend{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.pill{
+  border:2px solid #3b4fff;
+  background:#0d1226;
+  border-radius:999px;
+  padding:6px 10px;
+  font-weight:900;
+  font-size:.92rem;
+}
+.pill.ok{border-color:#2cff8a}
+.pill.lock{border-color:#ff3b6b}
+.pill.now{border-color:#00e0ff}
+.pill.done{border-color:#ffcc00}
+.pill.secret{border-color:#b36bff}
+.pill.boss{border-color:#ff6b00}
+
+/* Level grid */
+.levelGrid{
+  display:grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap:8px;
+}
+@media (max-width:860px){ .levelGrid{grid-template-columns: repeat(6, 1fr)} }
+@media (max-width:560px){ .levelGrid{grid-template-columns: repeat(5, 1fr)} }
+
+.lv{
+  border:2px solid #2a3cff;
+  background:#1a2142;
+  color:inherit;
+  border-radius:12px;
+  padding:10px 8px;
+  cursor:pointer;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-align:center;
+  transition:.12s;
+}
+.lv:hover{transform:translateY(-1px)}
+.lv:active{transform:translateY(0px) scale(.98)}
+.lv.locked{opacity:.45; cursor:not-allowed; border-color:#555; background:#222}
+.lv.done{border-color:#ffcc00}
+.lv.selected{outline: 3px solid #00e0ff}
+.lv.boss{border-color:#ff6b00}
+.lv.secret{border-color:#b36bff}
+
+/* Map */
+.mapWrap{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:12px;
+}
+@media (max-width:900px){ .mapWrap{grid-template-columns:1fr} }
+
+.worldTabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.tab{
+  border:2px solid #2a3cff;
+  background:#0d1226;
+  color:inherit;
+  padding:8px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:900;
+}
+.tab.active{outline:3px solid #00e0ff}
+
+.mapLegend{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0}
+.nodes{
+  border:2px solid #3b4fff;
+  background:#0d1226;
+  border-radius:14px;
+  padding:12px;
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:10px;
+}
+@media (max-width:560px){ .nodes{grid-template-columns: repeat(3, 1fr)} }
+.node{
+  border:2px solid #2a3cff;
+  background:#141a35;
+  border-radius:14px;
+  padding:10px;
+  cursor:pointer;
+  text-align:center;
+  font-weight:900;
+}
+.node.locked{opacity:.45; cursor:not-allowed; border-color:#555; background:#222}
+.node.done{border-color:#ffcc00}
+.node.now{border-color:#00e0ff}
+.node.secret{border-color:#b36bff}
+.node.boss{border-color:#ff6b00}
+
+/* Mobile pad */
+.mobilePad{display:none; gap:10px; padding: 0 12px 12px}
+.pad{
+  flex:1;
+  padding:12px 10px;
+  border-radius:14px;
+  border:2px solid #2a3cff;
+  background:#0d1226;
+  color:inherit;
+  font-weight:900;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.pad:active{transform:scale(.98)}
+@media (max-width:900px){ .mobilePad{display:flex} }
+
+.bottomBar{
+  display:flex; gap:10px; flex-wrap:wrap;
+  padding: 12px;
+  border-top:3px solid #2a3cff;
+  background:#151b33;
+}
+.bottomBar .pill{
+  border-radius:999px;
+  padding:7px 10px;
+  background:#0d1226;
+  border:2px solid #3b4fff;
+}
+
+/* Side */
+.sidePane{display:grid; gap:14px}
+.sideCard{
+  border:3px solid #2a3cff;
+  background:#11162a;
+  border-radius:18px;
+  padding:12px;
+  box-shadow: 0 0 30px #2a3cff33;
+}
+.sideTitle{font-weight:900; letter-spacing:.10em; margin-bottom:10px}
+#avatarMini{
+  width:100%;
+  height:auto;
+  border-radius:14px;
+  border:2px solid #3b4fff;
+  background:#0d1226;
+  image-rendering: pixelated;
+}
+.statRow{display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-top:1px solid #2a3cff}
+.statRow:first-of-type{border-top:none}
+
+/* Modal */
+.modal{position:fixed; inset:0; display:none; z-index:120}
+.modal[aria-hidden="false"]{display:block}
+.modalBack{position:absolute; inset:0; background:rgba(0,0,0,.65)}
+.modalPanel{
+  position:relative;
+  width:min(980px,92vw);
+  margin: 5vh auto;
+  border:3px solid #2a3cff;
+  background:#141a35;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow: 0 0 40px #2a3cff55;
+}
+.modalHead{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+  padding:14px;
+  border-bottom:3px solid #2a3cff;
+  background:#151b33;
+}
+.modalTitle{font-weight:900; letter-spacing:.1em}
+.modalSub{opacity:.85; font-size:.95rem}
+.modalBody{
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  gap:14px;
+  padding:14px;
+}
+@media (max-width:900px){ .modalBody{grid-template-columns:1fr} }
+
+.previewCol, .editCol{
+  border:2px solid #3b4fff;
+  border-radius:16px;
+  background:#0d1226;
+  padding:12px;
+  display:grid;
+  gap:10px;
+}
+#avatarPreview{
+  width:100%;
+  height:auto;
+  border-radius:14px;
+  border:2px solid #3b4fff;
+  background:#0b1020;
+  image-rendering: pixelated;
+}
+.grid2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+@media (max-width:700px){ .grid2{grid-template-columns:1fr} }
+.field{display:grid; gap:6px}
+.field label{opacity:.95; font-weight:900}
+.field select, .field input{
+  border:2px solid #2a3cff;
+  background:#11162a;
+  color:inherit;
+  border-radius:12px;
+  padding:10px 10px;
+  outline:none;
+}
+.gridColors{display:grid; grid-template-columns: repeat(4, 1fr); gap:10px}
+@media (max-width:700px){ .gridColors{grid-template-columns:repeat(2,1fr)} }
+/* --- FIX: modal avatar no se pega a la topbar --- */
+.modalPanel{
+  /* antes: margin: 5vh auto; */
+  margin: 110px auto 5vh;            /* separa del header */
+  max-height: calc(100vh - 140px);   /* evita que se salga de pantalla */
+  overflow: auto;                    /* scroll dentro si hace falta */
+}
+
+/* En pantallas pequeñas, un poco menos de margen */
+@media (max-width: 900px){
+  .modalPanel{
+    margin: 95px auto 4vh;
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* Bonus: cabecera del modal fija cuando haces scroll dentro */
+.modalHead{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+/* =========================
+   MOBILE FIX (UI + MODAL)
+   ========================= */
+@media (max-width: 900px){
+
+  /* Layout 1 columna y padding cómodo */
+  .layout{
+    width: min(980px, 94vw);
+    grid-template-columns: 1fr;
+    padding: 10px 0 26px;
+  }
+
+  /* Topbar: que no se coma la pantalla */
+  .topbar{
+    padding: 10px 12px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .brand .sub{font-size:.86rem}
+
+  /* Botones más compactos pero clicables */
+  .topActions{
+    gap: 6px;
+  }
+  .btn{
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  /* HUD: que no se haga gigante */
+  .hud{
+    padding: 10px;
+    gap: 8px;
+  }
+  .chip{
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 11px;
+  }
+
+  /* Canvas: ocupa más y se ve centrado */
+  .canvasWrap{
+    padding: 10px;
+  }
+  canvas#game{
+    border-radius: 14px;
+  }
+
+  /* Overlay/panel: que no quede estrecho */
+  .panel{
+    width: min(980px, 96%);
+    padding: 14px;
+  }
+
+  /* Grid de niveles más usable */
+  .levelGrid{
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  .lv{
+    padding: 11px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  /* MAP: nodos en 3 columnas */
+  .nodes{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* SidePane abajo */
+  .sidePane{
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== MODAL AVATAR (móvil) ===== */
+  .modalPanel{
+    /* casi pantalla completa, sin pegarse arriba */
+    width: min(980px, 94vw);
+    margin: 88px auto 12px;
+    max-height: calc(100vh - 110px);
+    overflow: auto;
+    border-radius: 16px;
+  }
+
+  /* cabecera del modal fija */
+  .modalHead{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+
+  /* editor a 1 columna */
+  .modalBody{
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  /* preview y editor más compactos */
+  .previewCol, .editCol{
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  #avatarPreview{
+    max-height: 260px;
+  }
+
+  /* controles más grandes para dedo */
+  .field select, .field input{
+    padding: 12px 10px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  /* colores en 2x2 */
+  .gridColors{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* fila de botones: que no explote */
+  .row{
+    gap: 8px;
+  }
+  .row .btn{
+    flex: 1;
+    min-width: 120px;
+  }
+
+  /* Mobile pad SIEMPRE visible */
+  .mobilePad{
+    display: flex !important;
+  }
+}
+
+/* Extra: en móviles muy pequeños, aún más margen */
+@media (max-width: 420px){
+  .modalPanel{
+    margin: 96px auto 10px;
+    max-height: calc(100vh - 120px);
+  }
+  .btn{
+    padding: 8px 9px;
+    font-size: 11px;
+  }
+}
