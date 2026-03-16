@@ -162,7 +162,7 @@ const DATA = {
     title:"Curso IA", 
     desc:"Conduct UX Research and Test Early Concepts",
     pdf:"images/certs/ia.pdf",
-    img:"images/certs/certificado-ia.png"
+    img:"images/certs/6.jpg"
   }
   
 ],
