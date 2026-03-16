@@ -159,8 +159,8 @@ const DATA = {
     img:"images/certs/5.jpg"
   },
   { 
-    title:"Curso IA", 
-    desc:"Conduct UX Research and Test Early Concepts",
+    title:"Desarrollo con IA", 
+    desc: "Certificado de iniciación al desarrollo con inteligencia artificial, donde se introducen conceptos básicos de IA y su aplicación práctica en proyectos y entornos de producción.",
     pdf:"images/certs/ia.pdf",
     img:"images/certs/6.jpg"
   }
