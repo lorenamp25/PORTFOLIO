@@ -58,7 +58,7 @@ const DATA = {
       title: "Streambox Angular",
       desc: "Aplicación de streaming desarrollada con Angular y desplegada en Vercel.",
       img: "images/projects/streambox-angular.png",
-      live: "https://streambox-angular-943yfwp0g-lorenas-projects-17e1e0a4.vercel.app/",
+      live: "https://streambox-angular.vercel.app/",
       code: "https://github.com/lorenamp25/Streambox-Angular.git",
       group: "Angular",
       tags: ["Angular", "TypeScript", "HTML", "CSS"]
@@ -67,7 +67,7 @@ const DATA = {
       title: "Hospital Management Angular",
       desc: "Aplicación hospitalaria en Angular para gestionar pacientes, doctores y citas.",
       img: "images/projects/hospital-app.png",
-      live: "https://hospital-management-angular-l4vy57shl-lorenas-projects-17e1e0a4.vercel.app/",
+      live: "https://hospital-management-angular-six.vercel.app/",
       code: "https://github.com/lorenamp25/hospital-management-angular.git",
       group: "Angular",
       tags: ["Angular", "TypeScript", "HTML", "CSS"]
