@@ -157,6 +157,12 @@ const DATA = {
     desc:"Build Dynamic User Interfaces (UI) for Websites and Apps",
     pdf:"Coursera2.pdf",
     img:"images/certs/5.jpg"
+  },
+  { 
+    title:"Curso IA", 
+    desc:"Conduct UX Research and Test Early Concepts",
+    pdf:"Certificado-IA.pdf",
+    img:"images/certs/certificado-ia.jpg"
   }
   
 ],
