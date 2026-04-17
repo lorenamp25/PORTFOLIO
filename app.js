@@ -329,12 +329,8 @@ function renderProjects() {
 
     body.appendChild(grid);
 
-    if (index === 0) {
-      block.classList.add("open");
-      body.style.display = "block";
-    } else {
-      body.style.display = "none";
-    }
+   block.classList.remove("open");
+body.style.display = "none";
 
     button.addEventListener("click", () => {
       const isOpen = block.classList.contains("open");
@@ -358,6 +354,7 @@ function renderProjects() {
 
   content.innerHTML = "";
   content.appendChild(wrapper);
+
 }
 /* =========================
    RENDER CERTS
@@ -421,7 +418,8 @@ function renderTech() {
 
     const body = document.createElement("div");
     body.className = "accordionBody customAccordionBody";
-
+    body.style.display = "none";  
+    
     const grid = document.createElement("div");
     grid.className = "techGrid";
 
@@ -587,3 +585,8 @@ const yearEl = document.getElementById("year");
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
+
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  header.classList.toggle("scrolled", window.scrollY > 10);
+});
