@@ -319,7 +319,8 @@ function renderProjects() {
 
     const body = document.createElement("div");
     body.className = "accordionBody customAccordionBody";
-
+    body.style.display = "none"; 
+    
     const grid = document.createElement("div");
     grid.className = "projGrid";
 
@@ -419,7 +420,7 @@ function renderTech() {
     const body = document.createElement("div");
     body.className = "accordionBody customAccordionBody";
     body.style.display = "none";  
-    
+
     const grid = document.createElement("div");
     grid.className = "techGrid";
 
@@ -436,12 +437,8 @@ function renderTech() {
 
     body.appendChild(grid);
 
-    if (index === 0) {
-      block.classList.add("open");
-      body.style.display = "block";
-    } else {
-      body.style.display = "none";
-    }
+ block.classList.remove("open");
+body.style.display = "none";
 
     button.addEventListener("click", () => {
       const isOpen = block.classList.contains("open");
