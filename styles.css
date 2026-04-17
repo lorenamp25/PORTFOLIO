@@ -1562,3 +1562,93 @@ footer::before{
     transform:translateY(0);
   }
 }
+/* =========================
+   📱 RESPONSIVE MÓVIL
+========================= */
+
+@media (max-width: 768px){
+
+  /* NAVBAR */
+  .nav{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  nav a{
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+
+  /* HOME */
+  .home{
+    padding: 60px 15px;
+  }
+
+  .homeInner{
+    padding: 40px 20px;
+  }
+
+  .welcome{
+    font-size: 32px;
+  }
+
+  /* ABOUT */
+  .aboutTop{
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .avatarWrap{
+    justify-content: center;
+  }
+
+  .avatar{
+    width: 180px;
+    height: 240px;
+  }
+
+  .aboutLeft p{
+    font-size: 16px;
+  }
+
+  /* STATS */
+  .stats{
+    grid-template-columns: 1fr;
+  }
+
+  /* PROJECTS */
+  .projGrid{
+    grid-template-columns: 1fr;
+  }
+
+  /* TECH */
+  .techGrid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* TABS */
+  .tabs{
+    grid-template-columns: 1fr;
+  }
+
+  /* CONTACT */
+  .contactModernGrid{
+    flex-wrap: wrap;
+  }
+
+  .contactModernItem{
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+}
