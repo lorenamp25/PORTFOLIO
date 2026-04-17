@@ -314,7 +314,7 @@ function renderProjects() {
     button.type = "button";
     button.innerHTML = `
       <span>${group}</span>
-      <small>${items.length} proyectos</small>
+      <small>${items.length} Projects</small>
     `;
 
     const body = document.createElement("div");
