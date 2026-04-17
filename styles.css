@@ -178,8 +178,8 @@ header.scrolled{
 }
 
 .brand small{
-  font-size:11px;
-  color: rgba(255,255,255,.6);
+  font-size:15px;
+  color: rgb(10, 255, 202);
 }
 
 /* punto glow */
@@ -207,7 +207,7 @@ nav a{
   font-size:13px;
   font-weight:600;
 
-  color: rgba(255,255,255,.7);
+  color: rgb(255, 255, 255);
   text-decoration:none;
 
   transition: .25s var(--ease);
@@ -286,7 +286,7 @@ section{ padding: 42px 0; }
   font-size: 16px;
   line-height: 1.6;
 
-  color: rgba(255,255,255,.75);
+  color: rgb(255, 255, 255);
 }
 
 /* OPCIONAL: ANIMACION SUAVE */
@@ -469,14 +469,15 @@ section{ padding: 42px 0; }
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -0.5px;
+  color: rgb(255, 157, 250);
 }
 
 .aboutLeft h3 .hi{
   display: block;
   margin-bottom: 8px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--cyan);
+  color: rgb(229, 208, 255);
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -484,9 +485,9 @@ section{ padding: 42px 0; }
 /* TEXTO */
 .aboutLeft p{
   margin-top: 14px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.7;
-  color: var(--muted);
+  color: white;
   max-width: 60ch;
 }
 
