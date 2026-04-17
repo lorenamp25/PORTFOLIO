@@ -29,97 +29,115 @@ sections.forEach(s=> s && io.observe(s));
 const DATA = {
   projects: [
     {
-      title: "Proyecto de Sistemas de Turnos CRUD",
-      desc: "Caso práctico: gestión de turnos para un negocio local (peluquería).",
+      title: "Meat Store Mobile App",
+      desc: "E-commerce web app inspired by Uber Eats. Includes product filtering, cart system, responsive design, and a modern mobile-first UI.",
+      img: "images/projects/foto.png", // ⚠️ añade imagen aquí
+      live: "https://carniceria-movil-ohllx9kqx-lorenas-projects-17e1e0a4.vercel.app/",
+      code: "https://github.com/lorenamp25/CarniceriaMovil-app",
+      group: "React",
+      tags: ["React", "JavaScript", "Tailwind", "Responsive", "UI/UX"]
+    },
+
+    {
+      title: "Shift Management System (CRUD)",
+      desc: "Practical case: shift management system for a local business (hair salon).",
       img: "images/projects/sistema-de-turnos-de-trabajo.jpg",
       code: "https://github.com/lorenamp25/PROYECTO-SISTEMA-TURNOS",
       group: "Full Stack / PHP",
       tags: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"]
     },
+
     {
-        title: "Proyecto Carnicería CRUD",
-      desc: "Diseño de una web para carnicería local, con enfoque en experiencia de usuario y jerarquía visual.",
+      title: "Butcher Shop Website (CRUD)",
+      desc: "Website design for a local butcher shop focused on user experience and visual hierarchy.",
       img: "images/projects/meat.avif",
       code: "https://github.com/lorenamp25/PROYECTO-CARNICERIA",
       group: "Full Stack / PHP",
       tags: ["PHP", "MySQL", "XML", "JSON", "HTML", "CSS"]
     },
+
     {
-    title: "TFG Final Grado",
-      desc: "App de recetas de cocina donde poder subir y compartir tus propias recetas.",
+      title: "Final Degree Project",
+      desc: "Recipe web application where users can upload and share their own recipes.",
       img: "images/projects/ordenador.avif",
       code: "https://github.com/lorenamp25/TFG_DAW",
       group: "Full Stack / PHP",
-      tags: ["API REST", "Responsive", "HTML", "CSS", "JavaScript"]
+      tags: ["REST API", "Responsive", "HTML", "CSS", "JavaScript"]
     },
-   
-  
+
     {
       title: "Streambox Angular",
-      desc: "Aplicación de streaming desarrollada con Angular y desplegada en Vercel.",
+      desc: "Streaming application developed with Angular and deployed on Vercel.",
       img: "images/projects/streambox-angular.png",
       live: "https://streambox-angular.vercel.app/",
       code: "https://github.com/lorenamp25/Streambox-Angular.git",
       group: "Angular",
       tags: ["Angular", "TypeScript", "HTML", "CSS"]
     },
+
     {
       title: "Hospital Management Angular",
-      desc: "Aplicación hospitalaria en Angular para gestionar pacientes, doctores y citas.",
+      desc: "Hospital management app to handle patients, doctors, and appointments.",
       img: "images/projects/hospital-app.png",
       live: "https://hospital-management-angular-six.vercel.app/",
       code: "https://github.com/lorenamp25/hospital-management-angular.git",
       group: "Angular",
       tags: ["Angular", "TypeScript", "HTML", "CSS"]
     },
+
     {
       title: "React Blog",
-      desc: "Blog desarrollado con React y desplegado en Vercel.",
+      desc: "Blog application built with React and deployed on Vercel.",
       img: "images/projects/react-blog.png",
       live: "https://react-blog-eta-henna.vercel.app/",
       code: "https://github.com/lorenamp25/react-blog.git",
       group: "React",
       tags: ["React", "JavaScript", "HTML", "CSS"]
     },
+
     {
-      title: "React Carrito Compra",
-      desc: "Aplicación de carrito de compra desarrollada con React.",
+      title: "Shopping Cart App",
+      desc: "Shopping cart application developed with React.",
       img: "images/projects/react-carrito-compra.png",
       live: "https://react-carrito-compra.vercel.app/",
       code: "https://github.com/lorenamp25/react-carrito-compra.git",
       group: "React",
       tags: ["React", "JavaScript", "HTML", "CSS"]
     },
+
     {
-      title: "React App Música",
-      desc: "Aplicación musical desarrollada con React.",
+      title: "Music App",
+      desc: "Music application developed using React.",
       img: "images/projects/react-app-musica.png",
       live: "https://react-app-musica.vercel.app/",
       code: "https://github.com/lorenamp25/react-app-musica.git",
       group: "React",
       tags: ["React", "JavaScript", "HTML", "CSS"]
     },
+
     {
-      title: "React App Red Social",
-      desc: "Aplicación tipo red social desarrollada con React y desplegada en Vercel.",
+      title: "Social Network App",
+      desc: "Social media-style application built with React and deployed on Vercel.",
       img: "images/projects/react-app-red-social.png",
       live: "https://react-app-red-social.vercel.app/",
       code: "https://github.com/lorenamp25/react-app-red-social.git",
       group: "React",
       tags: ["React", "JavaScript", "HTML", "CSS"]
     },
+
     {
       title: "Mario Bros JS",
-      desc: "Juego inspirado en Mario Bros desarrollado en JavaScript y desplegado en Vercel.",
+      desc: "Game inspired by Mario Bros built with JavaScript and deployed on Vercel.",
       img: "images/projects/mario-bros-js.png",
       live: "https://mario-bros-js2.vercel.app/",
       code: "https://github.com/lorenamp25/mario-bros-js.git",
       group: "JavaScript",
       tags: ["JavaScript", "HTML", "CSS", "Canvas"]
     },
+
     {
       title: "Bite Bazar JS",
-      desc: "Proyecto web en JavaScript desplegado en Vercel.",
+      desc: "JavaScript web project deployed on Vercel.",
       img: "images/projects/bite-bazar-js.png",
       live: "https://bite-bazar-js.vercel.app/",
       code: "https://github.com/lorenamp25/bite-bazar-js.git",
@@ -127,45 +145,45 @@ const DATA = {
       tags: ["JavaScript", "HTML", "CSS", "Responsive"]
     }
   ],
- certs: [
-  { 
-    title:"Google UX Design", 
-    desc:"Foundations of User Experience (UX) Design, ideación, prototipado y testeo.",
-    pdf:"Coursera1.pdf",
-    img:"images/certs/1.jpg"
-  },
-  { 
-    title:"Blender (curso completo)", 
-    desc:"Diseño grafico 3D, modelado, texturizado, animación y renderizado con Blender.",
-    pdf:"certificate.pdf",
-    img:"images/certs/blender.jpg"
-  },
-  { 
-    title:"Google UX Design", 
-    desc:"Design a User Experience for Social Good & Prepare for Jobs in UX Design",
-    pdf:"Coursera5.pdf",
-    img:"images/certs/2.jpg"
-  },
-  { 
-    title:"Google UX Design", 
-    desc:"Accelerate Your Job Search with AI",
-    pdf:"Coursera3.pdf",
-    img:"images/certs/3.jpg"
-  },
-  { 
-    title:"Google UX Design", 
-    desc:"Build Dynamic User Interfaces (UI) for Websites and Apps",
-    pdf:"Coursera2.pdf",
-    img:"images/certs/5.jpg"
-  },
-  { 
-    title:"Desarrollo con IA", 
-    desc: "Certificado de iniciación al desarrollo con inteligencia artificial, donde se introducen conceptos básicos de IA y su aplicación práctica en proyectos y entornos de producción.",
-    pdf:"images/certs/ia.pdf",
-    img:"images/certs/6.jpg"
-  }
-  
-],
+
+  certs: [
+    { 
+      title:"Google UX Design", 
+      desc:"Foundations of User Experience (UX) Design, ideation, prototyping and testing.",
+      pdf:"Coursera1.pdf",
+      img:"images/certs/1.jpg"
+    },
+    { 
+      title:"Blender (Complete Course)", 
+      desc:"3D design, modeling, texturing, animation and rendering using Blender.",
+      pdf:"certificate.pdf",
+      img:"images/certs/blender.jpg"
+    },
+    { 
+      title:"Google UX Design", 
+      desc:"Design a User Experience for Social Good & Prepare for Jobs in UX Design",
+      pdf:"Coursera5.pdf",
+      img:"images/certs/2.jpg"
+    },
+    { 
+      title:"Google UX Design", 
+      desc:"Accelerate Your Job Search with AI",
+      pdf:"Coursera3.pdf",
+      img:"images/certs/3.jpg"
+    },
+    { 
+      title:"Google UX Design", 
+      desc:"Build Dynamic User Interfaces (UI) for Websites and Apps",
+      pdf:"Coursera2.pdf",
+      img:"images/certs/5.jpg"
+    },
+    { 
+      title:"AI Development Basics", 
+      desc:"Introductory certificate in artificial intelligence development and practical applications.",
+      pdf:"images/certs/ia.pdf",
+      img:"images/certs/6.jpg"
+    }
+  ],
 
 
   tech: [
@@ -248,7 +266,7 @@ function createProjectCard(p) {
   }
 
   if (p.code) {
-    buttons += `<a class="projectBtn codeBtn" href="${p.code}" target="_blank" rel="noopener">Código ↗</a>`;
+    buttons += `<a class="projectBtn codeBtn" href="${p.code}" target="_blank" rel="noopener">Source Code ↗</a>`;
   }
 
   const tags = (p.tags || [])
@@ -366,7 +384,7 @@ function renderCerts() {
       </div>
 
       <div class="projFooter">
-        <a class="projectBtn demoBtn" href="${c.pdf}" target="_blank" rel="noopener">Ver PDF ↗</a>
+        <a class="projectBtn demoBtn" href="${c.pdf}" target="_blank" rel="noopener">View PDF ↗</a>
       </div>
     `;
 
@@ -398,7 +416,7 @@ function renderTech() {
     button.type = "button";
     button.innerHTML = `
       <span>${group}</span>
-      <small>${items.length} tecnologías</small>
+      <small>${items.length} Technologies</small>
     `;
 
     const body = document.createElement("div");
@@ -512,16 +530,16 @@ document.querySelectorAll(".dockItem").forEach((btn) => {
    QUICK MESSAGE TEMPLATES
 ========================= */
 const templates = {
-  recruiter: `Hola, soy Lorena Martín Piñero 👋
-Perfil junior (DAW + Google UX + Blender). Me interesa Front-end / UX/UI.
-¿Te puedo pasar mi CV y portfolio por aquí? Gracias 🙂`,
+ recruiter: `Hi, I'm Lorena Martín 👋
+Junior developer (Web Development + UX + 3D). I'm interested in Front-end / UI roles.
+Can I share my CV and portfolio with you? Thanks!`,
 
-  studio: `Hola! Soy Lorena 👋
-Me gusta crear interfaces modernas y limpias (Front-end + UX/UI) y estoy buscando mi primera oportunidad.
-¿Puedo enviarte portfolio y CV?`,
+  studio: `Hi! I'm Lorena 👋
+I enjoy building modern and clean interfaces (Front-end + UI) and I'm looking for my first opportunity.
+Can I send you my portfolio and CV?`,
 
-  network: `Hola! Soy Lorena 😊
-Estoy ampliando red en el sector (Front-end / UX/UI). Si te apetece, conectamos y te enseño mi portfolio.`
+  network: `Hi! I'm Lorena 😊
+I'm expanding my network in the Front-end/UI field. I'd love to connect and share my work.`
 };
 
 const quickText = document.getElementById("quickText");
